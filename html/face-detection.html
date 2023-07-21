@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentation</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+        <!-- MDB -->
+
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+        <!--Bootstrap-->
+
+        <!--CSS-->
+        <link href="../css/index.css" rel="stylesheet">
+        <!--CSS-->
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+
+        <!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+        <!--JS-->
+        <script type="text/javascript" src="../js/index.js" defer></script>
+        <!--JS-->
+
+        <title>
+            Deep Learning Project
+        </title>
+    </head>
+
+    <body>
+        <div id="home-page" class="main p-3">
+            <div class="row">
+                <div class="vertical-navigation col-md-2">
+                    <div class="div-logo">
+                        <img id="logo" src="../public/images/Screenshot 2023-07-10 225924.png" alt="Logo">
+                    </div>
+
+                    <ul class="ul-navigation">
+                        <a href="#">
+                            <li class="li-navigation li-navigation-home">
+                                <i class="bi bi-house"></i>
+                                <p>Home</p>
+                            </li>
+                        </a>
+
+
+                        <li class="li-navigation-line"></li>
+
+                        <a href="/html/classify.html">
+                            <li class="li-navigation">
+                                <i class="bi bi-c-square"></i>
+                                <p>Classify</p>
+                            </li>
+                        </a>
+                        <a href="/html/object-detection.html">
+                            <li class="li-navigation">
+                                <i class="far fa-clone"></i>
+                                <p>Detection</p>
+                            </li>
+                        </a>
+                        <a href="/html/face-detection.html">
+                            <li class="li-navigation">
+                                <i class="bi bi-bounding-box-circles"></i>
+                                <p>Landmark</p>
+                            </li>
+                        </a>
+                        <a href="#">
+                            <li class="li-navigation">
+                                <i class="bi bi-window"></i>
+                                <p>Tracking</p>
+                            </li>
+                        </a>
+                        <a href="/html/segmentation.html">
+                            <li class="li-navigation">
+                                <i class="bi bi-columns-gap"></i>
+                                <p>Segmentation</p>
+                            </li>
+                        </a>
+
+                    </ul>
+                    <button class="toggle-navigation shadow-5" onclick="toggleNavigation()">
+                        <i class="bi bi-caret-left"></i>
+                    </button>
+                </div>
+
+                <div class="col-md-10 content">
+                    <div class="div-breadcrumb">
+                        <a href="#">Home ></a>
+                        <p>Segmentation</p>
+                    </div>
+                    <div class="segmentation">
+                        <div class="div-custom-file">
+                            <div class="container div-video">
+                                <video id="detection-video" height="500" width="650" autoplay></video>
+                                <button class="btn-start shadow-4" onclick="startWebCam()"><i
+                                        class="bi bi-camera-video"></i></button>
+                                <button class="btn-detect shadow-4" onclick="faceDetection()"><i
+                                        class="bi bi-exclude"></i></button>
+                                <button class="btn-stop shadow-4" onclick="stopWebCam()"><i
+                                        class="bi bi-stop-circle"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+</body>
+
+</html>
